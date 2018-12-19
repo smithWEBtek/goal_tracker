@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  skip_before_action :require_login, only: [:new, :create]
+
   def new
   end
 
@@ -8,7 +10,8 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(params[:password])
       login_and_redirect(@user)
     else
-      render :new #figure out error messages
+      flash.now.alert = "Incorrect username or password"
+      render :new
     end
   end
 
