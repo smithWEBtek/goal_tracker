@@ -16,6 +16,6 @@
 
     <%= yield %>
 
-    <div><%= link_to "Logout", logout_path if logged_in? %></div>
+    <div><%= link_to "Logout", logout_path, method: :post if logged_in? %></div>
   </body>
 </html>
