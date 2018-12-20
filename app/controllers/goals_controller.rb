@@ -1,5 +1,5 @@
 class GoalsController < ApplicationController
-  before_action :set_goal, only: [:show, :edit, :update]
+  before_action :set_goal, only: [:show, :edit, :update, :destroy]
 
   def new
     @goal = current_user.goals.new
@@ -15,6 +15,9 @@ class GoalsController < ApplicationController
     end
   end
 
+  def show
+  end
+
   def edit
   end
 
@@ -26,7 +29,9 @@ class GoalsController < ApplicationController
     end
   end
 
-  def show
+  def destroy
+    @goal.destroy
+    redirect_to user_url(current_user)
   end
 
   private
