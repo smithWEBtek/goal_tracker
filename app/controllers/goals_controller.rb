@@ -1,5 +1,5 @@
 class GoalsController < ApplicationController
-  before_action :set_goal, only: [:show, :edit, :update, :destroy]
+  before_action :set_goal, only: [:show, :edit, :update, :destroy, :complete, :incomplete]
 
   def new
     @goal = current_user.goals.new
@@ -34,10 +34,22 @@ class GoalsController < ApplicationController
     redirect_to user_url(current_user)
   end
 
+  def complete
+    @goal.completed = true
+    @goal.save
+    redirect_to goal_url(@goal)
+  end
+
+  def incomplete
+    @goal.completed = false
+    @goal.save
+    redirect_to goal_url(@goal)
+  end
+
   private
 
   def goal_params
-    params.require(:goal).permit(:name, :summary, :completed)
+    params.require(:goal).permit(:name, :summary)
   end
 
   def set_goal
