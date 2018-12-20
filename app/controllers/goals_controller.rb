@@ -1,5 +1,5 @@
 class GoalsController < ApplicationController
-  before_action :set_goal, only: [:show, :edit]
+  before_action :set_goal, only: [:show, :edit, :update]
 
   def new
     @goal = current_user.goals.new
@@ -18,13 +18,21 @@ class GoalsController < ApplicationController
   def edit
   end
 
+  def update
+    if @goal.update(goal_params)
+      redirect_to goal_url(@goal)
+    else
+      render :edit
+    end
+  end
+
   def show
   end
 
   private
 
   def goal_params
-    params.require(:goal).permit(:name, :summary)
+    params.require(:goal).permit(:name, :summary, :completed)
   end
 
   def set_goal
