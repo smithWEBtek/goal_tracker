@@ -1,3 +1,10 @@
 <h1>Hello, <%= current_user.username %></h1>
 
+<h2>Your Current Goals</h2>
+  <ul>
+    <% @goals.each do |goal| %>
+      <li><%= link_to goal.name, goal_path(goal) %></li>
+    <% end %>
+  </ul>
+
 <p><%= link_to "Create a Goal", new_user_goal_path(current_user) %></p>

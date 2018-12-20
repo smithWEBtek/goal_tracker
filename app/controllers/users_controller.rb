@@ -16,6 +16,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @goals = current_user.goals
   end
 
   private
