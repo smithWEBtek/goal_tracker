@@ -1,0 +1,21 @@
+<h1>Add a Task Item to <%= @goal.name %></h1>
+
+<% if @task.errors.any? %>
+  <h2>The form contains <%= pluralize(@task.errors.count, "error") %>:</h2>
+    <ul>
+      <% @task.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+<% end %>
+
+<%= form_for([@goal, @task]) do |f| %>
+  <div class="form-group">
+    <%= f.label :name, "Give your task a name:" %><br />
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
