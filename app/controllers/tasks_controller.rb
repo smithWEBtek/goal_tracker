@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
   before_action -> { set_goal(params[:goal_id]) }, only: [:new, :create]
+  before_action :set_task, only: [:edit, :update]
 
   def new
     @task = @goal.tasks.new
@@ -15,9 +16,28 @@ class TasksController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @task.update(task_params)
+      redirect_to goal_url(@task.goal)
+    else
+      render :edit
+    end
+  end
+
   private
 
   def task_params
     params.require(:task).permit(:name)
+  end
+
+  def set_task
+    @task = current_user.tasks.find_by(id: params[:id])
+    unless @task
+      flash.alert = "Sorry, that task could not be found"
+      return redirect_to user_url(current_user)
+    end
   end
 end
