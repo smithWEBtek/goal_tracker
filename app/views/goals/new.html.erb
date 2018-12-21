@@ -9,7 +9,7 @@
     </ul>
 <% end %>
 
-<%= form_for([current_user, @goal]) do |f| %>
+<%= form_for(@goal) do |f| %>
   <div class="form-group">
     <%= f.label :name, "Give your goal a name:" %><br />
     <%= f.text_field :name %>

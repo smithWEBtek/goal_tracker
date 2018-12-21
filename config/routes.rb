@@ -5,9 +5,10 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
-  resources :users, only: [:new, :create, :show], shallow: true do
-    resources :goals, except: [:index]
-    resources :tasks
+  resources :users, only: [:new, :create, :show]
+
+  resources :goals, except: [:index], shallow: true do
+    resources :tasks, except: [:index]
   end
 
   patch '/goals/:id/complete', to: 'goals#complete', as: 'complete'
