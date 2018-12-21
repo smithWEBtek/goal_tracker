@@ -16,6 +16,7 @@ class GoalsController < ApplicationController
   end
 
   def show
+    @tasks = @goal.tasks
   end
 
   def edit
