@@ -1,26 +1,2 @@
 <h3>Create a Goal</h3>
-
-<% if @goal.errors.any? %>
-  <h2>The form contains <%= pluralize(@goal.errors.count, "error") %>:</h2>
-    <ul>
-      <% @goal.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
-<% end %>
-
-<%= form_for(@goal) do |f| %>
-  <div class="form-group">
-    <%= f.label :name, "Give your goal a name:" %><br />
-    <%= f.text_field :name %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :summary, "Enter a description (optional):" %><br />
-    <%= f.text_area :summary %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+<%= render "form" %>
