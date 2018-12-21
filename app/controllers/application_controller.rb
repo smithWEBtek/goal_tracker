@@ -23,4 +23,12 @@ class ApplicationController < ActionController::Base
       redirect_to root_url
     end
   end
+
+  def set_goal(id)
+    @goal = current_user.goals.find_by(id: id)
+    unless @goal
+      flash.alert = "Sorry, that goal could not be found"
+      return redirect_to user_url(current_user)
+    end
+  end
 end
