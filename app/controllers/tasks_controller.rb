@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action -> { set_goal(params[:goal_id]) }, only: [:new, :create]
-  before_action :set_task, only: [:edit, :update]
+  before_action :set_task, only: [:edit, :update, :destroy]
 
   def new
     @task = @goal.tasks.new
@@ -25,6 +25,12 @@ class TasksController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @goal = @task.goal
+    @task.destroy
+    redirect_to goal_url(@goal)
   end
 
   private
