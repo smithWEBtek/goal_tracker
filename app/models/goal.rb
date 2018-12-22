@@ -14,8 +14,4 @@ class Goal < ApplicationRecord
   def completed_tasks
     tasks.completed
   end
-  
-  def status
-    completed ? "Reached" : "In Progress"
-  end
 end
