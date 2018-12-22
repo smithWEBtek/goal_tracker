@@ -5,4 +5,8 @@ class Task < ApplicationRecord
 
   scope :completed, -> { where(completed: true) }
   scope :incomplete, -> { where(completed: false) }
+
+  def status
+    completed ? "Completed" : "In Progress"
+  end
 end
