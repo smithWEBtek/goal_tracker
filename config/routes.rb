@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :show]
 
   resources :goals, except: [:index], shallow: true do
-    resources :tasks, except: [:index]
+    resources :tasks, except: [:index, :show]
   end
 
   patch '/goals/:id/complete', to: 'goals#complete', as: 'complete_goal'
