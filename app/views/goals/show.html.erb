@@ -1,21 +1,16 @@
 <h1><%= @goal.name %></h1>
 <h2><%= @goal.summary %></h2>
-<h3><%= "Goal is Complete" if @goal.completed %></h3>
+
+<h3>Status: <%= @goal.status %> <%= goal_status_action_link(@goal) %></h3>
 
 <h3>Open Tasks</h3>
   <ul>
-    <% @tasks.incomplete.each do |task| %>
-      <li><strong><%= link_to task.name, task_path(task) %></strong> - <%= link_to "Edit", edit_task_path(task) %> - <%= link_to "Delete", task_path(task), method: :delete, data: { confirm: "Are you sure?" } %></li>
-    <% end %>
+    <%= render(partial: "tasks/incomplete_task", collection: @incomplete_tasks, as: :task) || content_tag(:li, "No open tasks available") %>
   </ul>
 
-<p><%= link_to "Add a Task Item To This Goal", new_goal_task_path(@goal) %></p>
+<h3>Completed Tasks</h3>
+  <ul>
+    <%= render(partial: "tasks/completed_task", collection: @completed_tasks, as: :task) || content_tag(:li, "No completed tasks available") %>
+  </ul>
 
-<p><%= link_to "Edit This Goal", edit_goal_path(@goal) %></p>
-<p><%= link_to "Delete This Goal", goal_path(@goal), method: :delete, data: { confirm: "Are you sure? Any associated tasks will be deleted as well" } %></p>
-
-<% if @goal.completed %>
-  <p><%= link_to "Mark As Incomplete", incomplete_path(@goal), method: :patch %></p>
-<% else %>
-  <p><%= link_to "Mark As Complete", complete_path(@goal), method: :patch %></p>
-<% end %>
+<p><%= render_task_links_if_incomplete(@goal) %> <%= link_to "Delete this Goal", goal_path(@goal), method: :delete, data: { confirm: "Are you sure? Any associated tasks will be deleted as well" } %></p>
