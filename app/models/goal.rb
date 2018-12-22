@@ -4,6 +4,7 @@ class Goal < ApplicationRecord
   has_many :tasks, dependent: :destroy
 
   validates :name, presence: true
+  validates_associated :category, message: "name cannot be blank or a duplicate"
 
   scope :completed, -> { where(completed: true) }
   scope :incomplete, -> { where(completed: false) }
