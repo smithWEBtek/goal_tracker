@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create, :show]
 
+  resources :categories, only: [:show]
+
   resources :goals, except: [:index], shallow: true do
     resources :tasks, except: [:index, :show]
   end
