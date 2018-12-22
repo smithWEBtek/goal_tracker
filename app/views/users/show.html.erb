@@ -2,16 +2,12 @@
 
 <h3>Your Current Goals</h3>
   <ul>
-    <% @goals.incomplete.each do |goal| %>
-      <li><%= link_to goal.name, goal_path(goal) %></li>
-    <% end %>
+    <li><%= render(@incomplete_goals) || "No goals in progress" %></li>
   </ul>
 
 <h3>Your Achievements</h3>
   <ul>
-    <% @goals.completed.each do |goal| %>
-      <li><%= link_to goal.name, goal_path(goal) %></li>
-    <% end %>
+    <li><%= render(@completed_goals) || "No completed goals available" %></li>
   </ul>
 
 <p><%= link_to "Create a Goal", new_goal_path %></p>
