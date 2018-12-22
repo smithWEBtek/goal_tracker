@@ -11,6 +11,9 @@ Rails.application.routes.draw do
     resources :tasks, except: [:index]
   end
 
-  patch '/goals/:id/complete', to: 'goals#complete', as: 'complete'
-  patch '/goals/:id/incomplete', to: 'goals#incomplete', as: 'incomplete'
+  patch '/goals/:id/complete', to: 'goals#complete', as: 'complete_goal'
+  patch '/goals/:id/incomplete', to: 'goals#incomplete', as: 'incomplete_goal'
+
+  patch '/tasks/:id/complete', to: 'tasks#complete', as: 'complete_task'
+  patch '/tasks/:id/incomplete', to: 'tasks#incomplete', as: 'incomplete_task'
 end
