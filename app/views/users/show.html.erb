@@ -2,12 +2,12 @@
 
 <h3>Your Current Goals</h3>
   <ul>
-    <li><%= render(@incomplete_goals) || "No goals in progress" %></li>
+    <%= render(@incomplete_goals) || content_tag(:li, "No goals in progress") %>
   </ul>
 
 <h3>Your Achievements</h3>
   <ul>
-    <li><%= render(@completed_goals) || "No completed goals available" %></li>
+    <%= render(@completed_goals) || content_tag(:li, "No completed goals available") %>
   </ul>
 
 <p><%= link_to "Create a Goal", new_goal_path %></p>
