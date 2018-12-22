@@ -16,7 +16,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @goals = current_user.goals
+    @incomplete_goals = current_user.incomplete_goals
+    @completed_goals = current_user.completed_goals
   end
 
   private
