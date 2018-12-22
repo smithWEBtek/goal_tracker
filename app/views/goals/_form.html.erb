@@ -14,6 +14,16 @@
   </div>
 
   <div class="form-group">
+    <%= f.label :category_name, "Give your goal a category:" %><br />
+    <%= f.text_field :category_name, list: "categories_autocomplete" %>
+    <datalist id="categories_autocomplete">
+      <% Category.all.each do |category| %>
+        <option value="<%= category.name %>">
+      <% end %>
+    </datalist>
+  </div>
+
+  <div class="form-group">
     <%= f.label :summary, "Enter a description (optional):" %><br />
     <%= f.text_area :summary %>
   </div>
