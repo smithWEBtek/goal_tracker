@@ -16,7 +16,8 @@ class GoalsController < ApplicationController
   end
 
   def show
-    @tasks = @goal.tasks
+    @incomplete_tasks = @goal.incomplete_tasks
+    @completed_tasks = @goal.completed_tasks
   end
 
   def edit
