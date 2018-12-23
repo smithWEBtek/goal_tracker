@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   post '/logout', to: 'sessions#destroy'
 
+  get '/auth/facebook/callback', to: 'omni_auth#facebook'
+
   root 'welcome#index'
 
   resources :users, only: [:new, :create, :show]
