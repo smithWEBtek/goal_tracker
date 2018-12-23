@@ -8,6 +8,13 @@ class User < ApplicationRecord
 
   has_secure_password
 
+  def self.find_or_create_with_facebook(auth)
+    find_or_create_by(uid: auth['uid']) do |user|
+      user.username = auth['info']['name']
+      user.password = SecureRandom.hex
+    end
+  end
+
   def incomplete_goals
     goals.incomplete
   end
