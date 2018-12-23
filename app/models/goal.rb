@@ -10,6 +10,14 @@ class Goal < ApplicationRecord
   scope :incomplete, -> { where(completed: false) }
   scope :most_recently_created, -> (limit) { order("created_at desc").limit(limit) }
 
+  def category_name=(name)
+    self.category = Category.find_or_create_by(name: name)
+  end
+
+  def category_name
+    self.category ? self.category.name : nil
+  end
+
   def incomplete_tasks
     tasks.incomplete
   end
@@ -18,12 +26,8 @@ class Goal < ApplicationRecord
     tasks.completed
   end
 
-  def category_name=(name)
-    self.category = Category.find_or_create_by(name: name)
-  end
-
-  def category_name
-    self.category ? self.category.name : nil
+  def status
+    completed ? "completed" : "ongoing"
   end
 
   def display_summary
