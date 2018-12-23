@@ -2,6 +2,14 @@ class TasksController < ApplicationController
   before_action -> { set_goal(params[:goal_id]) }, only: [:new, :create]
   before_action :set_task, only: [:edit, :update, :destroy, :complete, :incomplete]
 
+  def index
+    unless current_user == User.find_by(id: params[:user_id])
+      flash.alert = "Sorry, you can only view your own task list"
+      redirect_to user_url(current_user)
+    end
+    @incomplete_goals = current_user.incomplete_goals_with_tasks
+  end
+
   def new
     redirect_if_goal_completed(@goal)
     @task = @goal.tasks.new
