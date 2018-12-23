@@ -8,6 +8,7 @@ class Goal < ApplicationRecord
 
   scope :completed, -> { where(completed: true) }
   scope :incomplete, -> { where(completed: false) }
+  scope :most_recently_created, -> (limit) { order("created_at desc").limit(limit) }
 
   def incomplete_tasks
     tasks.incomplete
