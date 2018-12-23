@@ -4,7 +4,6 @@ class OmniAuthController < ApplicationController
   def facebook
     auth = request.env['omniauth.auth']
     user = User.find_or_create_with_facebook(auth)
-    session[:user_id] = user.id
-    redirect_to user_url(user)
+    login_and_redirect(user)
   end
 end
