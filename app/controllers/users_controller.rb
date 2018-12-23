@@ -16,10 +16,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    unless current_user == User.find_by(id: params[:id])
-      flash.alert = "Sorry, you can only view your own profile"
-      redirect_to user_url(current_user)
-    end
+    redirect_if_not_user(params[:id])
     @incomplete_goals = current_user.incomplete_goals
     @completed_goals = current_user.completed_goals
   end

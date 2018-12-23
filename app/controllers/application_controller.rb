@@ -31,4 +31,11 @@ class ApplicationController < ActionController::Base
       return redirect_to user_url(current_user)
     end
   end
+
+  def redirect_if_not_user(id)
+    unless current_user == User.find_by(id: id)
+      flash.alert = "Sorry, you can only view your own pages"
+      redirect_to user_url(current_user)
+    end
+  end
 end
