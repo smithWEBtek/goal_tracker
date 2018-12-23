@@ -7,7 +7,9 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
-  resources :users, only: [:new, :create, :show]
+  resources :users, only: [:new, :create, :show], shallow: true do
+    resources :tasks, only: [:index]
+  end
 
   resources :categories, only: [:show]
 
