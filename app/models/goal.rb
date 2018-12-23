@@ -27,6 +27,6 @@ class Goal < ApplicationRecord
   end
 
   def display_summary
-    summary.blank? ? "No summary available" : summary
+    summary.blank? ? "none available" : summary
   end
 end
