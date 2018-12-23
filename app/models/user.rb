@@ -15,4 +15,8 @@ class User < ApplicationRecord
   def completed_goals
     goals.completed
   end
+
+  def incomplete_goals_with_tasks
+    incomplete_goals.reject { |goal| goal.incomplete_tasks.empty? }
+  end
 end
