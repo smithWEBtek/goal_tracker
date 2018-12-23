@@ -24,4 +24,8 @@ class Goal < ApplicationRecord
   def category_name
     self.category ? self.category.name : nil
   end
+
+  def display_summary
+    summary.blank? ? "No summary available" : summary
+  end
 end
