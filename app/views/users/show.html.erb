@@ -1,5 +1,7 @@
 <h1>Hello, <%= current_user.username %></h1>
 
+<h3><%= link_to "View All Open Tasks", user_tasks_path(current_user) %></h3>
+
 <h3>Your Current Goals</h3>
   <ul>
     <%= render(@incomplete_goals) || content_tag(:li, "No goals in progress") %>
