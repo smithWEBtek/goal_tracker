@@ -1,5 +1,18 @@
 <h1>Welcome to Goal Tracker</h1>
 
+<p>
+  Goal Tracker is a handy app for recording and managing your goals.<br />
+  Easily keep track of the tasks you need to complete in order to reach your goals.<br />
+  Accomplished goals and tasks are logged, so you can always look back at your achievements.
+</p>
+
+<h3>Need inspiration? Check out some recently created goals:</h3>
+<ul>
+  <% @recently_created_goals.each do |goal| %>
+    <li><%= goal.name %></li>
+  <% end %>
+</ul>
+
 <% if logged_in? %>
   <p><%= link_to "View Your Profile", user_path(current_user) %></p>
 <% else %>
