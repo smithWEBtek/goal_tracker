@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def set_goal(id)
+  def set_goal(id)  #used by GoalsController and TasksController
     @goal = current_user.goals.find_by(id: id)
     unless @goal
       flash.alert = "Sorry, that goal could not be found"
@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def redirect_if_not_user(id)
+  def redirect_if_not_user(id)  #used by UsersController and TasksController
     unless current_user == User.find_by(id: id)
       flash.alert = "Sorry, you can only view your own pages"
       redirect_to user_url(current_user)
