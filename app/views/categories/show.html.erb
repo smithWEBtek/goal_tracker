@@ -1,2 +1,8 @@
-<h1>Categories#show</h1>
-<p>Find me in app/views/categories/show.html.erb</p>
+<h1><%= @category.name %> category</h1>
+
+<h2>Goals Recently Created Within This Category</h2>
+  <ul>
+    <% @recently_created_goals.each do |goal| %>
+      <li><%= goal.name %></li>
+    <% end %>
+  </ul>
