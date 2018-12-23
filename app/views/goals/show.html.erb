@@ -1,5 +1,5 @@
 <h1><%= @goal.name %></h1>
-<h2>Category: <%= @goal.category_name %></h2>
+<h2>Category: <%= link_to @goal.category_name, category_path(@goal.category) %></h2>
 <h2>Summary: <%= @goal.summary %></h2>
 
 <h3>Status: <%= @goal.status %> <%= goal_status_action_link(@goal) %></h3>
