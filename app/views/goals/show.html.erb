@@ -5,13 +5,13 @@
 <h3>Status: <%= @goal.status %> <%= goal_status_action_link(@goal) %></h3>
 
 <h3>Open Tasks</h3>
-  <ul>
-    <%= render(partial: "tasks/incomplete_task", collection: @incomplete_tasks, as: :task) || content_tag(:li, "No open tasks available") %>
-  </ul>
+<ul>
+  <%= render(partial: "tasks/incomplete_task", collection: @incomplete_tasks, as: :task) || content_tag(:li, "No open tasks available") %>
+</ul>
 
 <h3>Completed Tasks</h3>
-  <ul>
-    <%= render(partial: "tasks/completed_task", collection: @completed_tasks, as: :task) || content_tag(:li, "No completed tasks available") %>
-  </ul>
+<ul>
+  <%= render(partial: "tasks/completed_task", collection: @completed_tasks, as: :task) || content_tag(:li, "No completed tasks available") %>
+</ul>
 
-<p><%= render_task_links_if_incomplete(@goal) %> <%= link_to "Delete this Goal", goal_path(@goal), method: :delete, data: { confirm: "Are you sure? Any associated tasks will be deleted as well" } %></p>
+<div class="links"><%= render_task_links_if_incomplete(@goal) %> <%= link_to "Delete this Goal", goal_path(@goal), method: :delete, data: { confirm: "Are you sure? Any associated tasks will be deleted as well" } %></div>
