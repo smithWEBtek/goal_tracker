@@ -21,6 +21,7 @@ class GoalsController < ApplicationController
   end
 
   def edit
+    redirect_if_goal_completed(@goal)
   end
 
   def update

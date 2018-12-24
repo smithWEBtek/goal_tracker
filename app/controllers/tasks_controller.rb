@@ -66,14 +66,7 @@ class TasksController < ApplicationController
     @task = current_user.tasks.find_by(id: params[:id])
     unless @task
       flash.alert = "Sorry, that task could not be found"
-      return redirect_to user_url(current_user)
-    end
-  end
-
-  def redirect_if_goal_completed(goal)
-    if goal.completed
-      flash.alert = "You must reopen a goal to modify it and its tasks"
-      return redirect_to goal_url(goal)
+      redirect_to user_url(current_user)
     end
   end
 end

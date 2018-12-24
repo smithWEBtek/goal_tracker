@@ -32,6 +32,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def redirect_if_goal_completed(goal)  #used by GoalsController and TasksController
+    if goal.completed
+      flash.alert = "You must reopen a goal to modify it and its tasks"
+      redirect_to goal_url(goal)
+    end
+  end
+
   def redirect_if_not_user(id)  #used by UsersController and TasksController
     unless current_user == User.find_by(id: id)
       flash.alert = "Sorry, you can only view your own pages"
