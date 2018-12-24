@@ -12,5 +12,5 @@
 </ul>
 
 <% unless logged_in? %>
-  <div class="links">Please<%= link_to "Signup", new_user_path %> or <%= link_to "Login", login_path %> or <%= link_to('Login with Facebook!', '/auth/facebook') %></div>
+  <div class="links">Please <%= link_to "Signup", new_user_path %> or <%= link_to "Login", login_path %> or <%= link_to('Login with Facebook!', '/auth/facebook') %></div>
 <% end %>
