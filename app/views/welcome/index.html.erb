@@ -11,8 +11,6 @@
   <%= render(partial: "goals/public_goal", collection: @recently_created_goals, as: :goal) || content_tag(:li, "None available... be the first!") %>
 </ul>
 
-<% if logged_in? %>
-  <div class="links"><%= link_to "View Your Profile", user_path(current_user) %></div>
-<% else %>
-  <div class="links">Please <%= link_to "Signup", new_user_path %> or <%= link_to "Login", login_path %> or <%= link_to('Login with Facebook!', '/auth/facebook') %></div>
+<% unless logged_in? %>
+  <div class="links">Please<%= link_to "Signup", new_user_path %> or <%= link_to "Login", login_path %> or <%= link_to('Login with Facebook!', '/auth/facebook') %></div>
 <% end %>

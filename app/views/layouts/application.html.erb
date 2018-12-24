@@ -16,11 +16,8 @@
 
     <%= yield %>
 
-    <div class="links">
-      <% if logged_in? %>
-        <%= link_to "Logout", logout_path, method: :post %> |
-        <%= link_to "User Profile", user_path(current_user) %>
-      <% end %>
-    </div>
+    <% if logged_in? %>
+      <div class="links"><%= link_to "User Profile", user_path(current_user) %> | <%= link_to "Logout", logout_path, method: :post %></div>
+    <% end %>
   </body>
 </html>
