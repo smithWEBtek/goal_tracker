@@ -1,13 +1,6 @@
 <h1>Add a Task Item to <%= @goal.name %></h1>
 
-<% if @task.errors.any? %>
-  <h2>The form contains <%= pluralize(@task.errors.count, "error") %>:</h2>
-    <ul>
-      <% @task.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
-<% end %>
+<%= render partial: "error_messages", locals: { object: @task } %>
 
 <%= form_for([@goal, @task]) do |f| %>
   <div class="form-group">
