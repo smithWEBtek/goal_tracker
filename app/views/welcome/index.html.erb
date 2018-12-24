@@ -6,7 +6,7 @@
   Accomplished goals and tasks are logged, so you can always look back at your achievements.
 </p>
 
-<h3>Need inspiration? Check out some recently created goals:</h3>
+<h2>Need inspiration? Check out some recently created goals:</h2>
 <ul>
   <%= render(partial: "goals/public_goal", collection: @recently_created_goals, as: :goal) || content_tag(:li, "None available... be the first!") %>
 </ul>
