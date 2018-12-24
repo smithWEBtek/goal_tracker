@@ -1,24 +1,23 @@
-# README
+# Goal Tracker
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Goal Tracker keeps track of your goals and the tasks you need to complete to reach them.
 
-Things you may want to cover:
+## Versions
 
-* Ruby version
+Ruby 2.3.3 & Rails 5.2.2
 
-* System dependencies
+## Installation & Usage
 
-* Configuration
+* Fork & clone this repo
+* Run **bundle install**
+* Run **rake db:migrate** then **rake db:seed**
+* Run **thin start --ssl** to start local server
 
-* Database creation
 
-* Database initialization
+## Contributions
 
-* How to run the test suite
+Bug reports and pull requests are welcome on GitHub at https://github.com/sunyounghwang/goal_tracker. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
-* Services (job queues, cache servers, search engines, etc.)
+## License
 
-* Deployment instructions
-
-* ...
+Goal Tracker is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
