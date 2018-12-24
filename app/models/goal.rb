@@ -3,8 +3,11 @@ class Goal < ApplicationRecord
   belongs_to :category
   has_many :tasks, dependent: :destroy
 
-  validates :name, presence: true
-  validates_associated :category, message: "name cannot be blank or a duplicate"
+  validates :name, presence: { message: "of goal can't be blank" }
+
+  validate do |goal|
+    goal.category.errors.full_messages.each { |msg| errors[:base] << msg }
+  end
 
   scope :completed, -> { where(completed: true) }
   scope :incomplete, -> { where(completed: false) }
