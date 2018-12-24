@@ -1,8 +1,8 @@
-<h3>Your Task List</h3>
+<h1>Your Task List</h1>
 
 <% @incomplete_goals.each do |goal| %>
-  <%= link_to goal.name, goal_path(goal) %>
+  <h2><%= link_to goal.name, goal_path(goal) %></h2>
   <ul>
-    <%= render(partial: "incomplete_task", collection: goal.incomplete_tasks, as: :task) || content_tag(:li, "No open tasks available") %>
+    <%= render(partial: "incomplete_task", collection: goal.incomplete_tasks, as: :task) %>
   </ul>
 <% end %>
