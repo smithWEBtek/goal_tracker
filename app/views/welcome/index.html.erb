@@ -8,14 +8,11 @@
 
 <h3>Need inspiration? Check out some recently created goals:</h3>
 <ul>
-  <% @recently_created_goals.each do |goal| %>
-    <li><%= goal.name %></li>
-  <% end %>
+  <%= render(partial: "goals/public_goal", collection: @recently_created_goals, as: :goal) || content_tag(:li, "None available... be the first!") %>
 </ul>
 
 <% if logged_in? %>
-  <p><%= link_to "View Your Profile", user_path(current_user) %></p>
+  <div class="links"><%= link_to "View Your Profile", user_path(current_user) %></div>
 <% else %>
-  <p>Please <%= link_to "Signup", new_user_path %> or <%= link_to "Login", login_path %></p>
-  <p>Or <%= link_to('Login with Facebook!', '/auth/facebook') %></p>
+  <div class="links">Please <%= link_to "Signup", new_user_path %> or <%= link_to "Login", login_path %> or <%= link_to('Login with Facebook!', '/auth/facebook') %></div>
 <% end %>
