@@ -1,14 +1,7 @@
-<h1>Add a Task Item to <%= @goal.name %></h1>
+<h1>Add a Task to <%= @goal.name %></h1>
 
-<%= render partial: "error_messages", locals: { object: @task } %>
+<%= render(partial: "error_messages", locals: { object: @task }) %>
 
 <%= form_for([@goal, @task]) do |f| %>
-  <div class="form-group">
-    <%= f.label :name, "Give your task a name:" %><br />
-    <%= f.text_field :name %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <%= render(partial: "form_fields", locals: { f: f }) %>
 <% end %>
