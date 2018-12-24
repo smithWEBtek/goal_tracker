@@ -14,6 +14,6 @@ module GoalsHelper
   end
 
   def render_task_links_if_incomplete(goal)
-    render partial: "incomplete_goal_task_links", locals: {goal: goal} unless goal.completed
+    render(partial: "incomplete_goal_task_links", locals: {goal: goal}) unless goal.completed
   end
 end
