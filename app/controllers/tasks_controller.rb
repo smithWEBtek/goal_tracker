@@ -24,6 +24,7 @@ class TasksController < ApplicationController
 
   def edit
     redirect_if_goal_completed(@task.goal)
+    redirect_if_task_completed(@task)
   end
 
   def update
@@ -67,6 +68,13 @@ class TasksController < ApplicationController
     unless @task
       flash.alert = "Sorry, that task could not be found"
       redirect_to user_url(current_user)
+    end
+  end
+
+  def redirect_if_task_completed(task)
+    if task.completed
+      flash.alert = "You must reopen a task to modify it"
+      redirect_to goal_url(task.goal)
     end
   end
 end
