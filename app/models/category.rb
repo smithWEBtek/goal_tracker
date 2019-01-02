@@ -6,4 +6,6 @@ class Category < ApplicationRecord
   validates :name, uniqueness: { case_sensitive: false, message: "of category has already been taken. Please select the existing version" }
 
   before_save { self.name = name.downcase }
+
+  scope :most_popular, -> (limit) { joins(:goals).group(:id).order("COUNT(categories.id) desc").limit(limit) }
 end
