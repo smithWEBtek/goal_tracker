@@ -5,19 +5,31 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+      <a class="navbar-brand" href="/">Goal Tracker</a>
+      <ul class="navbar-nav">
+        <% if logged_in? %>
+          <li class="nav-item">
+            <%= link_to "Logout", logout_path, method: :post, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Your Goals", user_path(current_user), class: "nav-link" %>
+          </li>
+        <% end %>
+      </ul>
+    </nav>
+
     <% if flash.alert %>
       <div class="alert"><strong><%= flash.alert %></strong></div>
     <% end %>
 
     <%= yield %>
 
-    <% if logged_in? %>
-      <div class="links"><%= link_to "Logout", logout_path, method: :post %> | <%= link_to "User Profile", user_path(current_user) %></div>
-    <% end %>
   </body>
 </html>
