@@ -1,7 +1,7 @@
 <h1>Your Task List</h1>
 
 <% @incomplete_goals.each do |goal| %>
-  <h2><%= link_to goal.name, goal_path(goal) %></h2>
+  <h2><small><%= link_to goal.name, goal_path(goal) %></small></h2>
   <ul>
     <%= render(partial: "incomplete_task", collection: goal.incomplete_tasks, as: :task) %>
   </ul>

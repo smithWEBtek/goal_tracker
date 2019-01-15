@@ -1,13 +1,12 @@
 <h1>Hello, <%= current_user.username %></h1>
+<p><%= link_to "View All Open Tasks", user_tasks_path(current_user) %></p>
 
-<h2><%= link_to "View All Open Tasks", user_tasks_path(current_user) %></h2>
-
-<h3>Your Current Goals</h3>
+<h2>Your Current Goals</h2>
 <ul>
   <%= render(partial: "goals/private_goal", collection: @incomplete_goals, as: :goal) || content_tag(:li, "No goals in progress") %>
 </ul>
 
-<h3>Your Achievements</h3>
+<h2>Your Achievements</h2>
 <ul>
   <%= render(partial: "goals/private_goal", collection: @completed_goals, as: :goal) || content_tag(:li, "No completed goals available") %>
 </ul>

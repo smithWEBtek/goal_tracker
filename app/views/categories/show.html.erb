@@ -1,6 +1,6 @@
 <h1><%= @category.name %> category</h1>
 
-<h2>Recently Created Goals In This Category</h2>
+<h2><small>Recently Created Goals In This Category</small></h2>
 <ul>
   <%= render(partial: "goals/public_goal", collection: @recently_created_goals, as: :goal) || content_tag(:li, "None available... be the first!") %>
 </ul>

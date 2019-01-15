@@ -1,15 +1,15 @@
 <h1><%= @goal.name %></h1>
-<h2>Category: <%= link_to @goal.category_name, category_path(@goal.category) %></h2>
-<h2>Summary: <%= @goal.display_summary %></h2>
+<p>
+  <strong>category:</strong> <%= link_to @goal.category_name, category_path(@goal.category) %> | <strong>status:</strong> <%= @goal.status %> <small><%= goal_status_action_link(@goal)%></small><br>
+  <strong>summary:</strong> <%= @goal.display_summary %>
+</p>
 
-<h3>Status: <%= @goal.status %> <%= goal_status_action_link(@goal) %></h3>
-
-<h3>Open Tasks</h3>
+<h2>Open Tasks</h2>
 <ul>
   <%= render(partial: "tasks/incomplete_task", collection: @goal.incomplete_tasks, as: :task) || content_tag(:li, "No open tasks available") %>
 </ul>
 
-<h3>Completed Tasks</h3>
+<h2>Completed Tasks</h2>
 <ul>
   <%= render(partial: "tasks/completed_task", collection: @goal.completed_tasks, as: :task) || content_tag(:li, "No completed tasks available") %>
 </ul>
