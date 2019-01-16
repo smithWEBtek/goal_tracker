@@ -16,6 +16,10 @@ class GoalsController < ApplicationController
   end
 
   def show
+    respond_to do |f|
+      f.html
+      f.json { render json: @goal.completed ? current_user.completed_goals : current_user.incomplete_goals }
+    end
   end
 
   def edit
