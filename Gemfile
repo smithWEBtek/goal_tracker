@@ -32,6 +32,10 @@ gem 'omniauth-facebook'
 gem 'dotenv-rails'
 gem 'thin'
 
+gem 'jquery-rails'
+gem 'handlebars_assets'
+gem 'active_model_serializers'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
