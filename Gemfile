@@ -34,7 +34,7 @@ gem 'thin'
 
 gem 'jquery-rails'
 gem 'handlebars_assets'
-gem 'active_model_serializers'
+gem 'active_model_serializers', require: true
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
