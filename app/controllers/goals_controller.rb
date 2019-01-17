@@ -16,6 +16,8 @@ class GoalsController < ApplicationController
   end
 
   def show
+    @task = @goal.tasks.new
+
     respond_to do |f|
       f.html
       f.json { render json: @goal.completed ? current_user.completed_goals : current_user.incomplete_goals }

@@ -5,6 +5,14 @@
   <strong>summary:</strong> <%= @goal.display_summary %>
 </p>
 
+<% unless @goal.completed %>
+  <%= form_for [@goal, @task] do |f| %>
+  <div class="form-group">
+    <%= f.text_field :name, placeholder: "Add a Task" %>
+  </div>
+  <% end %>
+<% end %>
+
 <h2>Open Tasks</h2>
 <ul>
   <%= render(partial: "tasks/incomplete_task", collection: @goal.incomplete_tasks, as: :task) || content_tag(:li, "No open tasks available") %>
