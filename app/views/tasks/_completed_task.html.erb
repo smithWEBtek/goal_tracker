@@ -1,5 +1,5 @@
 <li>
-  <strong><%= task.name %></strong> |
+  <strong><%= task.name %></strong> <small>|
   <%= link_to "Delete", task_path(task), method: :delete, data: { confirm: "Are you sure?" } %> |
-  <%= link_to "Reopen", incomplete_task_path(task), method: :patch %>
+  <%= link_to "Reopen", incomplete_task_path(task), method: :patch %></small>
 </li>
