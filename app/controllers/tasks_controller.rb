@@ -16,9 +16,15 @@ class TasksController < ApplicationController
     @task = @goal.tasks.build(task_params)
 
     if @task.save
-      redirect_to goal_url(@goal)
+      respond_to do |f|
+        f.html { redirect_to goal_url(@goal) }
+        f.json { render json: @task }
+      end
     else
-      render :new
+      respond_to do |f|
+        f.html { render :new }
+        f.json { render json: @task }
+      end
     end
   end
 
