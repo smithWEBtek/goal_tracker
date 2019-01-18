@@ -6,7 +6,7 @@
 </p>
 
 <% unless @goal.completed %>
-  <%= form_for [@goal, @task] do |f| %>
+  <%= form_for [@goal, @goal.tasks.new] do |f| %>
   <div class="form-group">
     <%= f.text_field :name, placeholder: "Add a Task" %>
   </div>
